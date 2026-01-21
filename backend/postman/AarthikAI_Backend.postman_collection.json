@@ -1,0 +1,624 @@
+{
+    "info": {
+        "name": "AarthikAI Backend API - Complete",
+        "description": "Complete API collection for testing AarthikAI backend with Pro and Personal Finance modes",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        },
+        {
+            "key": "session_id",
+            "value": "{{$guid}}",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "Health & Status",
+            "item": [
+                {
+                    "name": "Root",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Health Check",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/health",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "health"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Metrics",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/metrics",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "metrics"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Pro Mode - Stock Queries",
+            "item": [
+                {
+                    "name": "Stock Price - Reliance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"What is the current price of Reliance?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Stock Analysis - TCS",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"Analyze TCS fundamentals and give me key metrics\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Stock Comparison",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"Compare Infosys and TCS on key financial metrics\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Sector Performance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"Which sectors are performing well this year?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Latest News",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"What's the latest news about HDFC Bank?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Pro Mode - Market Queries",
+            "item": [
+                {
+                    "name": "Market Overview",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"Give me today's market overview\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "FII/DII Activity",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"What is the FII and DII activity today?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Top Gainers/Losers",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"Show me top 5 gainers and losers in Nifty 50\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Index Performance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"How is Nifty Bank performing compared to Nifty 50?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"pro\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Personal Finance Mode",
+            "item": [
+                {
+                    "name": "Emergency Fund Basics",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"What is an emergency fund and why do I need one?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"personal\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "SIP Explanation",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"Explain SIP to me like I'm a beginner. How does it work?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"personal\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Goal Planning - House",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"I want to buy a house worth 50 lakhs in 5 years. How much should I invest monthly?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"personal\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Investment Strategy",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"I'm 28 years old with 50k monthly savings. What's a good investment strategy for me?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"personal\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Debt vs Equity",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"Should I invest in debt or equity funds? What's the difference?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"personal\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Tax Saving",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"What are the best tax-saving investment options under 80C?\",\n  \"session_id\": \"{{session_id}}\",\n  \"metadata\": {\"user_mode\": \"personal\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/message",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "message"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Session Management",
+            "item": [
+                {
+                    "name": "Get History",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/history/{{session_id}}?limit=50",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "history",
+                                "{{session_id}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "50"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Clear Session",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/chat/session/{{session_id}}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "chat",
+                                "session",
+                                "{{session_id}}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Authentication",
+            "item": [
+                {
+                    "name": "Initiate Zerodha OAuth",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"session_id\": \"{{session_id}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/zerodha/initiate",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "zerodha",
+                                "initiate"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Zerodha Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/zerodha/status/{{session_id}}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "zerodha",
+                                "status",
+                                "{{session_id}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Disconnect Zerodha",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"session_id\": \"{{session_id}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/zerodha/disconnect",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "zerodha",
+                                "disconnect"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

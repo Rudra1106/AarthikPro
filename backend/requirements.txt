@@ -1,0 +1,61 @@
+# Backend Production Requirements
+# Minimal dependencies for production deployment
+
+# Web Framework
+fastapi==0.115.3
+uvicorn[standard]==0.25.0
+websockets==12.0
+python-multipart==0.0.9
+
+# LangChain & AI
+langchain==0.3.12
+langchain-openai==0.2.12
+langchain-anthropic==0.3.0
+langgraph==0.2.55
+langchain-community==0.3.12
+langsmith>=0.1.17,<0.3
+
+# Vector DB & Embeddings
+pinecone-client==5.0.1
+sentence-transformers==3.3.1
+
+# Database
+pymongo>=4.9,<4.10
+motor==3.6.0
+
+# Cache
+redis==5.2.0
+
+# HTTP Client
+httpx==0.28.1
+
+# Data Processing
+numpy
+pandas
+
+# Validation & Config
+pydantic==2.10.0
+pydantic-settings==2.6.0
+python-dotenv==1.0.1
+
+# Utilities
+tenacity==9.0.0
+tiktoken==0.8.0
+tqdm>=4.66.0
+requests>=2.31.0
+
+# Security
+cryptography>=41.0.0
+
+# Trading APIs
+kiteconnect
+dhanhq
+
+# PDF Processing (if needed)
+pdfplumber
+
+# Monitoring
+psutil
+
+# OpenAI
+openai==1.57.0

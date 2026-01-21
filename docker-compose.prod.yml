@@ -1,0 +1,118 @@
+# Production-optimized docker-compose for cloud deployment
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: aarthikai-redis-prod
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: >
+      redis-server --appendonly yes --appendfsync everysec --maxmemory 512mb --maxmemory-policy allkeys-lru --save 900 1 --save 300 10 --save 60 10000
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - aarthikai-network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+
+  oauth-server:
+    build: .
+    container_name: aarthikai-oauth-prod
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    command: python oauth_server.py
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - aarthikai-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+
+  market-worker:
+    build: .
+    container_name: aarthikai-worker-prod
+    restart: always
+    env_file:
+      - .env
+    command: python scripts/market_data_worker.py --loop
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - aarthikai-network
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+
+  chainlit:
+    build: .
+    container_name: aarthikai-app-prod
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+    depends_on:
+      redis:
+        condition: service_healthy
+      oauth-server:
+        condition: service_healthy
+    networks:
+      - aarthikai-network
+    volumes:
+      - ./data:/app/data:ro
+      - ./.chainlit:/app/.chainlit
+      - chainlit-logs:/app/logs
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+        reservations:
+          memory: 1G
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+networks:
+  aarthikai-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local
+  chainlit-logs:
+    driver: local

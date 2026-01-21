@@ -1,0 +1,262 @@
+{
+  "completed_isins": [
+    "INE001B01026",
+    "INE007C01021",
+    "INE00IK01029",
+    "INE00RL01028",
+    "INE00M201021",
+    "IN9564C01011",
+    "INE00RQ01019",
+    "INE008A01015",
+    "INE00LM01029",
+    "INE004C01028",
+    "INE001O01029",
+    "INE00KV01022",
+    "INE00ER01015",
+    "INE008C01011",
+    "INE007G01014",
+    "INE00CX01017",
+    "INE008N01018",
+    "IN9080I01015",
+    "IN9201F01013",
+    "INE004A01022",
+    "INE003A01024",
+    "INE006Z01016",
+    "INE002S01010",
+    "IN9273A01047",
+    "INE00C401011",
+    "INE00FM01013",
+    "INE008B01013",
+    "INE00GK01023",
+    "INE005I01014",
+    "INE00Q901014",
+    "INE006C01015",
+    "INE005E01013",
+    "INE00EM01016",
+    "IN9242Q01014",
+    "INE00IY01012",
+    "IN9526B01012",
+    "INE008Z01020",
+    "IN9237C01014",
+    "INE00CA01015",
+    "INE00H001014",
+    "INE00HZ01011",
+    "INE00U801010",
+    "IN9624Z01022",
+    "INE002E01010",
+    "IN9397D01014",
+    "IN9623B01058",
+    "INE002L01015",
+    "INE009U01011",
+    "INE00C501018",
+    "INE00CE01017",
+    "IN90PTR01010",
+    "INE00F201020",
+    "IN9170U01027",
+    "INE005C01017",
+    "INE00R701025",
+    "INE00LO01017",
+    "INE007A01025",
+    "INE00SW01015",
+    "INE005G01026",
+    "INE00Q601028",
+    "IN9572J01019",
+    "INE00U401027",
+    "INE005B01027",
+    "INE00OQ01016",
+    "INE00ST01011",
+    "INE003B01014",
+    "INE009C01019",
+    "INE00E101023",
+    "IN9093R01019",
+    "IN9175A01010",
+    "INE00NH01017",
+    "INE006F01018",
+    "INE00D001018",
+    "INE00M901018",
+    "INE004Z01011",
+    "IN9638N01010",
+    "INE001E01012",
+    "INE00SY01011",
+    "INE00S901012",
+    "INE00UG01014",
+    "INE00EV01017",
+    "INE00F301010",
+    "INE00MT01022",
+    "IN9278G01019",
+    "INE001F01019",
+    "INE00TV01023",
+    "INE00N401018",
+    "INE00QT01015",
+    "IN9382T01012",
+    "INE007N01010",
+    "INE00FF01025",
+    "INE003F01015",
+    "INE009A01021",
+    "INE00IN01015",
+    "INE002A01018",
+    "INE006I01046",
+    "INE00PV01013",
+    "INE007B01023",
+    "INE002B01016",
+    "INE00NI01015"
+  ],
+  "processed_chunks": [
+    0
+  ],
+  "current_chunk": 1,
+  "failed_downloads": [
+    {
+      "isin": "IN9175A01010",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/570004/5700040314.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 12:48:42"
+    },
+    {
+      "isin": "INE004C01028",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/514386/70415514386.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 12:59:23"
+    },
+    {
+      "isin": "INE007B01023",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e59af59d-3691-42ba-9f3f-d318e109e8ae.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:30:41"
+    },
+    {
+      "isin": "INE007B01023",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3c19b923-f6c7-4319-bbec-8aae546df351.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:30:45"
+    },
+    {
+      "isin": "INE007B01023",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/532285/5322850318.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:30:58"
+    },
+    {
+      "isin": "INE008B01013",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9ea7a3c2-0e50-4920-a940-6430b068b7cd.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:33:51"
+    },
+    {
+      "isin": "INE008B01013",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/524288/5242880319.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:34:05"
+    },
+    {
+      "isin": "INE008C01011",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/526640/5266400317.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:34:29"
+    },
+    {
+      "isin": "INE008C01011",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/526640/5266400316.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:35:03"
+    },
+    {
+      "isin": "INE008C01011",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/526640/5266400312.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:35:12"
+    },
+    {
+      "isin": "INE009A01021",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=25cc7fbc-154b-4463-928d-c95f2d8c5c9c.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:45:46"
+    },
+    {
+      "isin": "INE009A01021",
+      "url": "https://www.infosys.com/investors/reports-filings/annual-report/annual/documents/infosys-ar-21.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:45:57"
+    },
+    {
+      "isin": "INE009C01019",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/514442/70489514442.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:50:26"
+    },
+    {
+      "isin": "INE009C01019",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/514442/5144420319.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:51:04"
+    },
+    {
+      "isin": "INE009C01019",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/514442/5144420314.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:52:06"
+    },
+    {
+      "isin": "INE00C401011",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/539400/5394000317.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:57:28"
+    },
+    {
+      "isin": "INE00CA01015",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/542233/75478542233.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:59:15"
+    },
+    {
+      "isin": "INE00CA01015",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/542233/70306542233.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 13:59:19"
+    },
+    {
+      "isin": "INE00FM01013",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/523186/69503523186.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 14:05:00"
+    },
+    {
+      "isin": "INE00FM01013",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/523186/5231860317.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 14:06:15"
+    },
+    {
+      "isin": "INE00GK01023",
+      "url": "https://www.yashhv.com/yashadmin/investor_portal/downloadsfiles/3170191.%20annual%20report-fy-2023-24_compressed.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 14:07:44"
+    },
+    {
+      "isin": "INE00LO01017",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=163520c2-efc1-4bbe-9a84-f710a54c1baf.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 14:18:13"
+    },
+    {
+      "isin": "INE00M901018",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b97ea9db-9327-4bb4-9a54-8aa20c2ad822.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 14:19:12"
+    },
+    {
+      "isin": "INE00Q901014",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/542034/5420340319.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 14:24:14"
+    },
+    {
+      "isin": "INE00SY01011",
+      "url": "https://www.bseindia.com/bseplus/AnnualReport/541701/76576541701.pdf",
+      "error": "Download failed",
+      "timestamp": "2026-01-06 14:30:54"
+    }
+  ],
+  "last_processed_index": 0,
+  "last_updated": "2026-01-06 14:33:52"
+}

@@ -1,0 +1,118 @@
+<<<<<<< HEAD
+# Environment variables
+.env
+
+# Python cache & build files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test and coverage files
+=======
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Chainlit
+.chainlit/
+.files/
+
+# Test files
+test_results_*.json
+test_*.py
+debug_*.py
+
+# Logs
+*.log
+logs/
+
+
+
+# Cache
+.cache/
+*.cache
+
+# Docker
+.dockerignore
+
+# Misc
+>>>>>>> 75bf066 (initial commit)
+.pytest_cache/
+.coverage
+htmlcov/
+
+<<<<<<< HEAD
+# Byte-compiled / optimized / DLL files
+*.egg-info/
+*.egg
+
+# FastAPI / Uvicorn cache
+*.db
+*.sqlite3
+
+# Dependencies or temporary data
+node_modules/
+=======
+# Redis
+dump.rdb
+>>>>>>> 75bf066 (initial commit)
