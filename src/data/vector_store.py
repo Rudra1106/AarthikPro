@@ -1,10 +1,11 @@
 """
 Pinecone vector store interface for RAG on financial reports.
+Uses OpenAI embeddings for better quality and lower memory footprint.
 """
 import asyncio
 from typing import List, Dict, Any, Optional
 from pinecone import Pinecone, ServerlessSpec
-from sentence_transformers import SentenceTransformer
+from openai import OpenAI
 
 from src.config import settings
 
@@ -12,6 +13,12 @@ from src.config import settings
 class VectorStore:
     """
     Pinecone vector store for semantic search on financial documents.
+    
+    Uses OpenAI text-embedding-3-small for:
+    - No model loading (instant startup)
+    - Lower memory footprint (~0MB vs ~120MB)
+    - Better quality embeddings
+    - Consistent performance
     
     Optimizations:
     - Hybrid search (dense embeddings)
@@ -23,8 +30,9 @@ class VectorStore:
         self.pc = Pinecone(api_key=settings.pinecone_api_key)
         self.index_name = settings.pinecone_index_name
         
-        # Initialize embedding model (runs locally for cost savings)
-        self.embedding_model = SentenceTransformer(settings.embedding_model)
+        # Initialize OpenAI client for embeddings
+        self.openai_client = OpenAI(api_key=settings.openai_api_key)
+        self.embedding_model = "text-embedding-3-small"  # 1536 dimensions
         
         # Get or create index
         self._ensure_index_exists()
@@ -38,7 +46,7 @@ class VectorStore:
             # Create index with serverless spec (cost-effective)
             self.pc.create_index(
                 name=self.index_name,
-                dimension=384,  # all-MiniLM-L6-v2 dimension
+                dimension=1536,  # text-embedding-3-small dimension
                 metric="cosine",
                 spec=ServerlessSpec(
                     cloud="aws",
@@ -47,9 +55,14 @@ class VectorStore:
             )
     
     def _generate_embedding(self, text: str) -> List[float]:
-        """Generate embedding for text using local model."""
-        embedding = self.embedding_model.encode(text, convert_to_tensor=False)
-        return embedding.tolist()
+        """Generate embedding using OpenAI API."""
+        response = self.openai_client.embeddings.create(
+            model=self.embedding_model,
+            input=text,
+            encoding_format="float"
+        )
+        return response.data[0].embedding
+
     
     async def search(
         self,
