@@ -2,32 +2,32 @@
 # Consolidated dependencies for deployment
 
 # Web Framework
-fastapi==0.115.3
-uvicorn[standard]==0.25.0
-gunicorn==23.0.0
+fastapi
+uvicorn[standard]
+gunicorn
 websockets
-python-multipart==0.0.9
+python-multipart
 
 # LangChain & AI
-langchain==0.3.12
-langchain-openai==0.2.12
-langchain-anthropic==0.3.0
-langgraph==0.2.55
-langchain-community==0.3.12
-langsmith>=0.1.17,<0.3
+langchain
+langchain-openai
+langchain-anthropic
+langgraph
+langchain-community
+langsmith
 
 # Vector DB (OpenAI embeddings - no sentence-transformers needed)
-pinecone-client==5.0.1
+pinecone-client
 
 # Database
-pymongo>=4.9,<4.10
-motor==3.6.0
+pymongo
+motor
 
 # Cache
-redis==5.2.0
+redis
 
 # HTTP Client
-httpx==0.28.1
+httpx
 aiohttp # For async HTTP requests (Indian API)
 
 # Data Processing
@@ -35,18 +35,19 @@ numpy
 pandas
 
 # Validation & Config
-pydantic==2.10.0
-pydantic-settings==2.6.0
-python-dotenv==1.0.1
+pydantic
+pydantic-settings
+python-dotenv
 
 # Utilities
-tenacity==9.0.0
-tiktoken==0.8.0
-tqdm>=4.66.0
-requests>=2.31.0
-
+tenacity
+tiktoken
+tqdm
+requests
+pytz
 # Security
-cryptography>=41.0.0
+cryptography
+python-dotenv
 
 # Trading APIs
 kiteconnect
@@ -59,7 +60,8 @@ pdfplumber
 psutil
 
 # OpenAI (for embeddings + LLM)
-openai==1.57.0
+openai
 
 # Date/Time utilities (for nselib vendor fix)
 python-dateutil
+pinecone
