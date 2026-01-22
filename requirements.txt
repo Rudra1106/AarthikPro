@@ -28,6 +28,7 @@ redis==5.2.0
 
 # HTTP Client
 httpx==0.28.1
+aiohttp # For async HTTP requests (Indian API)
 
 # Data Processing
 numpy
@@ -59,3 +60,6 @@ psutil
 
 # OpenAI (for embeddings + LLM)
 openai==1.57.0
+
+# Date/Time utilities (for nselib vendor fix)
+python-dateutil
