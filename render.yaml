@@ -2,7 +2,7 @@
 # Auto-deploy configuration for Render platform
 
 services:
-  # Main Web Service
+  # Main Web Service - Backend Chatbot
   - type: web
     name: aarthikai-chatbot
     env: docker
@@ -69,3 +69,65 @@ services:
       # Workers (configurable)
       - key: WORKERS
         value: 2
+
+  # Background Worker - Market Data Caching
+  - type: worker
+    name: aarthikai-worker
+    env: docker
+    region: oregon
+    plan: free
+    dockerfilePath: ./Dockerfile.worker
+    dockerContext: .
+    
+    # Auto-deploy on push
+    autoDeploy: true
+    
+    # Environment variables (same as web service)
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      
+      # OpenAI
+      - key: OPENAI_API_KEY
+        sync: false
+      
+      # OpenRouter
+      - key: OPENROUTER_API_KEY
+        sync: false
+      
+      # Perplexity
+      - key: PERPLEXITY_API_KEY
+        sync: false
+      
+      # Pinecone
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX_NAME
+        value: aarthikai-embeddings-v2
+      
+      # MongoDB
+      - key: MONGODB_URI
+        sync: false
+      
+      # Redis (CRITICAL for worker)
+      - key: REDIS_URL
+        sync: false
+      
+      # Dhan API (CRITICAL for worker)
+      - key: DHAN_CLIENT_ID
+        sync: false
+      - key: DHAN_ACCESS_TOKEN
+        sync: false
+      
+      # Zerodha API
+      - key: ZERODHA_API_KEY
+        sync: false
+      - key: ZERODHA_API_SECRET
+        sync: false
+      
+      # Indian API
+      - key: INDIAN_API_KEY
+        sync: false
+      - key: INDIAN_API_BASE_URL
+        value: https://stock.indianapi.in
+

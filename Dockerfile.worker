@@ -1,0 +1,39 @@
+# Worker Dockerfile for Market Data Caching
+# Runs market_data_worker.py as background service
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY src/ ./src/
+COPY scripts/ ./scripts/
+COPY vendor/ ./vendor/
+
+# Create non-root user
+RUN useradd -m -u 1000 workeruser && \
+    chown -R workeruser:workeruser /app
+
+USER workeruser
+
+# Environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    ENVIRONMENT=production
+
+# Health check (worker doesn't have HTTP endpoint, so check process)
+HEALTHCHECK --interval=60s --timeout=10s --start-period=30s --retries=3 \
+    CMD ps aux | grep -q "[p]ython scripts/market_data_worker.py" || exit 1
+
+# Run market data worker
+CMD ["python", "scripts/market_data_worker.py", "--loop"]
