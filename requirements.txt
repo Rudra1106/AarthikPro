@@ -1,35 +1,61 @@
+# Production Requirements - AarthikAI Chatbot
+# Consolidated dependencies for deployment
+
+# Web Framework
+fastapi==0.115.3
+uvicorn[standard]==0.25.0
+gunicorn==23.0.0
+websockets
+python-multipart==0.0.9
+
+# LangChain & AI
 langchain==0.3.12
 langchain-openai==0.2.12
 langchain-anthropic==0.3.0
 langgraph==0.2.55
 langchain-community==0.3.12
 langsmith>=0.1.17,<0.3
+
+# Vector DB (OpenAI embeddings - no sentence-transformers needed)
 pinecone-client==5.0.1
-sentence-transformers==3.3.1
+
+# Database
 pymongo>=4.9,<4.10
 motor==3.6.0
+
+# Cache
 redis==5.2.0
+
+# HTTP Client
 httpx==0.28.1
-openai==1.57.0
-chainlit==1.3.2
-fastapi>=0.115.3,<0.116
-uvicorn[standard]>=0.25.0,<0.26.0
-pydantic==2.10.0
-kiteconnect
-pydantic-settings==2.6.0
-python-dotenv==1.0.1
-tenacity==9.0.0
-tiktoken==0.8.0
-pytest==8.3.4
-pytest-asyncio==0.24.0
-black==24.10.0
-ruff==0.8.4
-mypy==1.13.0
+
+# Data Processing
 numpy
 pandas
-requests>=2.31.0
+
+# Validation & Config
+pydantic==2.10.0
+pydantic-settings==2.6.0
+python-dotenv==1.0.1
+
+# Utilities
+tenacity==9.0.0
+tiktoken==0.8.0
 tqdm>=4.66.0
-pdfplumber
+requests>=2.31.0
+
+# Security
 cryptography>=41.0.0
+
+# Trading APIs
+kiteconnect
 dhanhq
+
+# PDF Processing
+pdfplumber
+
+# Monitoring
 psutil
+
+# OpenAI (for embeddings + LLM)
+openai==1.57.0

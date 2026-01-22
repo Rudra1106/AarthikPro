@@ -1,69 +1,38 @@
-<<<<<<< HEAD
-# ---- Builder Stage ----
-FROM python:3.11-slim AS builder
+# Production Dockerfile for AarthikAI Chatbot
+# Multi-stage build for optimal size and performance
+# Optimized for Render/Railway/Cloud deployment
+
+# ============================================
+# Builder Stage - Install Dependencies
+# ============================================
+FROM python:3.11-slim as builder
 
 WORKDIR /app
 
-# Install curl and dependencies
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
-
-# Copy the requirements file
-COPY requirements.txt .
-
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# ---- Runner Stage ----
-FROM python:3.11-slim
-
-WORKDIR /app
-
-# Install curl for health checks
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
-
-# Copy installed dependencies AND binaries from the builder stage
-COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
-
-# Copy the application code
-COPY . .
-
-# Expose the port the app runs on
-EXPOSE 5007
-
-# Command to run the application
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-w", "2", "-b", "0.0.0.0:5007", "main:app"]
-=======
-# Production-ready Dockerfile for AarthikAI Chatbot
-# Multi-stage build for smaller image size
-
-FROM python:3.13-slim as builder
-
-# Set working directory
-WORKDIR /app
-
-# Install system dependencies
+# Install build dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
+    --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
 COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir --user -r requirements.txt
+# Install Python dependencies to user directory
+RUN pip install --user --no-cache-dir -r requirements.txt
 
+# ============================================
+# Runtime Stage - Minimal Production Image
+# ============================================
+FROM python:3.11-slim
 
-# Final stage
-FROM python:3.13-slim
-
-# Set working directory
 WORKDIR /app
 
-# Install runtime dependencies only
+# Install only runtime dependencies
 RUN apt-get update && apt-get install -y \
     curl \
+    --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy Python dependencies from builder
@@ -73,27 +42,36 @@ COPY --from=builder /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
 # Copy application code
-COPY . .
+COPY src/ ./src/
+COPY backend/ ./backend/
+COPY vendor/ ./vendor/
 
 # Create non-root user for security
-RUN useradd -m -u 1000 chainlit && \
-    chown -R chainlit:chainlit /app
+RUN useradd -m -u 1000 appuser && \
+    chown -R appuser:appuser /app
 
 # Switch to non-root user
-USER chainlit
+USER appuser
 
-# Expose port
+# Expose port (configurable via PORT env var)
 EXPOSE 8000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
+    CMD curl -f http://localhost:${PORT:-8000}/health || exit 1
 
-# Set environment variables
+# Environment variables
 ENV PYTHONUNBUFFERED=1 \
-    CHAINLIT_HOST=0.0.0.0 \
-    CHAINLIT_PORT=8000
+    PYTHONDONTWRITEBYTECODE=1 \
+    ENVIRONMENT=production \
+    PORT=8000
 
-# Run the application
-CMD ["chainlit", "run", "app.py", "--host", "0.0.0.0", "--port", "8000"]
->>>>>>> 75bf066 (initial commit)
+# Run with gunicorn for production stability
+CMD gunicorn backend.main:app \
+    --workers ${WORKERS:-2} \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --bind 0.0.0.0:${PORT:-8000} \
+    --timeout 120 \
+    --access-logfile - \
+    --error-logfile - \
+    --log-level info
